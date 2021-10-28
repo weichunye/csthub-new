@@ -1,7 +1,7 @@
 <template>
     <div>
         <Header></Header>
-        <p class="returnPage" @click="back"> <i class="el-icon-arrow-left"></i>返回</p>
+        <p class="returnPage" @click="back">返回<i class="el-icon-arrow-left"></i></p>
         <div class="sidebar">
             <el-menu
                     default-active="$router.path"
@@ -245,32 +245,39 @@
 
     .sidebar {
         position: fixed;
-        left: 0;
-        top: 40px;
-        padding-top: 20px;
+        left:0;
+        top:0;
         bottom: 0;
         width: 100%;
-        /*background: #003265;*/
+        /*z-index: 9;*/
+        display: block;
+        padding:33px 0px 0;
     }
     .sidebar  .el-menu{
         border: none;
+        padding-left:50px;
+        border-bottom:1px solid rgba(255,255,255,0.3);
+    }
+    .sidebar  .el-menu .is-active span{
+        color:rgb(255, 208, 75);
     }
     .sidebar span{
         color: #fff;
     }
     .returnPage{
         position: fixed;
-        left: 240px;
-        top: 70px;
-        font-size: 14px;
-        color: #b5b6b7;
+        right: 50px;
+        top: 53px;
+        font-size: 15px;
+        color: #ffffff;
         line-height: 20px;
         z-index: 100;
         cursor: pointer;
     }
     .returnPage i{
-        color: #b5b6b7;
-        margin-right: 5px;
+        color: #ffffff;
+        margin-left: 5px;
+        transform:rotate(180deg);
     }
 
 </style>

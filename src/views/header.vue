@@ -7,28 +7,29 @@
 
             </div>
             <div class="right-div">
+
                 <el-button  class="newproject" v-popover:popover4></el-button>
+                <router-link to="messagelist">
+                    <i router class="topmessage el-icon-message-solid"></i>
+                    <span v-if="messageLength>0" class="topmessagenum">{{messageLength}}</span>
+                </router-link>
                 <div  class="search-box">
                     <input v-model="keyword"  @keyup.enter="searchSubmit"/>
                     <router-link :to="{path:'/SearchPage',query:{keyword:keyword}}">
                         <button>搜索11</button>
                     </router-link>
                 </div>
-
-                <a  class="loginout" @click="loginOut"  href="https://passport.escience.cn/logout?WebServerURL=http://www.cstos.cstcloud.cn">【退出】</a>
                 <dl class="userinfo">
-                    <dt>
-                        <img src="../assets/photo.jpg"/>
-                        <span> </span>
-                    </dt>
+<!--                    <dt>-->
+<!--                        <img src="../assets/photo.jpg"/>-->
+<!--                        <span> </span>-->
+<!--                    </dt>-->
                     <dd>
                         {{ this.userInfo.trueName }}
                     </dd>
                 </dl>
-                <router-link to="messagelist">
-                    <i router class="topmessage el-icon-message-solid"></i>
-                    <span v-if="messageLength>0" class="topmessagenum">{{messageLength}}</span>
-                </router-link>
+                <a  class="loginout" @click="loginOut"  href="https://passport.escience.cn/logout?WebServerURL=http://www.cstos.cstcloud.cn">【退出】</a>
+
 
             </div>
 
@@ -445,39 +446,41 @@
         left: 0;
         top: 0;
         width: 100%;
-        height: 40px;
-        line-height: 40px;
-        /*background: #fbfcfc;*/
-        /*z-index: 100;*/
-       /* border-bottom: 1px solid #dedede;*/
+        min-height: 30px;
+        line-height:30px;
+        background: #EDEEF0;
+        padding:0 30px;
+        box-sizing: border-box;
+        z-index: 11;
     }
     .header .holde-div{
         float: left;
         width: 230px;
-        height: 40px;
-        background: #003265;
+        height: 30px;
+        margin:3px 0 0 0;
     }
     .header .right-div{
-        /*float: left;*/
+        float: right;
+        display:inline-flex;
+        align-items: center;
     }
     .header .logo{
         float: left;
-        margin-left: 20px;
-        margin: 10px;
+        margin:10px;
         height: 40px;
     }
     .header .logoname{
         float: left;
-        margin-left:10px;
+        margin-left:0;
         font-size: 26px;
         font-weight: bold;
-        color: #fff;
+        color: #333333;
         letter-spacing: 2px;
     }
 
     .header .search-box{
         float: left;
-        margin-top: 13px;
+        /*margin-top: 13px;*/
         width: 360px;
         height: 32px;
     }
@@ -509,17 +512,17 @@
     }
     .header  .newproject{
         float: left;
-        margin: 15px 20px 0 20px;
+        margin: 0 20px 0 20px;
         width: 18px;
         height: 19px;
         cursor: pointer;
-        background: url("../assets/icon_newproject.png") no-repeat;
+        background: url("../assets/icon_newproject.png") no-repeat center;
         border:none;
         background-size: 30px 30px;
     }
     .header .topmessage{
         float: right;
-        margin: 12px 20px 0 0;
+        margin: 0px 20px 0 0;
         width: 30px;
         height: 30px;
         font-size: 30px;
@@ -546,9 +549,10 @@
     }
     .header .loginout{
         float: right;
-        margin: 0  20px;
+        margin: 0  20px 0 0;
         font-size: 14px;
         color: #d31519;
+        text-decoration: none;
     }
     .header .userinfo dt {
         float: left;
@@ -569,7 +573,7 @@
         float: left;
         margin-left: 10px;
         font-size: 14px;
-        line-height: 60px;
+        line-height: 30px;
         color: #000;
         text-align: center;
     }

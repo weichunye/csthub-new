@@ -802,9 +802,8 @@ export default {
   }
   .repositorydetail {
     position: relative;
-    margin: 80px 15px 15px;
+    margin: 130px 15px 15px;
     padding: 15px 30px;
-    margin-left: 310px;
     min-height: calc(100vh - 60px);
     background: #fff;
     border-radius: 8px;}

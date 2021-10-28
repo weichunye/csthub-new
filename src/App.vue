@@ -30,7 +30,7 @@
   width: 100%;
   height: 100%;
   /*background: #fff;*/
-  border: 1px solid #fff;
+  /*border: 1px solid #fff;*/
   box-sizing: border-box;
 }
 

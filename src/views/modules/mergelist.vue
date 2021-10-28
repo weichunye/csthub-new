@@ -234,12 +234,14 @@ export default {
 
   .commiterecord{
     position: relative;
-    margin:15px;
+    margin:50px 60px;
     padding: 15px 30px;
-    margin-left: 310px;
+    margin-top: 150px;
+    /*height: 100%;*/
     min-height: calc(100vh - 60px);
     background: #fff;
     border-radius: 8px;
+    box-sizing: border-box;
   }
   .commiterecord .el-card__body div{
     font-size: 14px;

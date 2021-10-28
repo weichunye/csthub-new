@@ -161,12 +161,12 @@ export default {
   }
   .home{
     position: relative;
-    margin: 80px 15px 15px;
     padding: 15px 30px;
-    margin-left: 230px;
+    /*margin-left: 230px;*/
     min-height: calc(100vh - 60px);
     background: #fff;
     border-radius: 8px;
+    box-sizing: border-box;
   }
   .home h3{
     font-size: 18px;
