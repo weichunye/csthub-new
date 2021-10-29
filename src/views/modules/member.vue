@@ -207,9 +207,8 @@ export default {
 
   .depotmember{
     position: relative;
-    margin:15px;
+    margin:110px  15px 0;
     padding: 15px 30px;
-    margin-left: 310px;
     min-height: calc(100vh - 60px);
     background: #fff;
     border-radius: 8px;

@@ -2,7 +2,7 @@
     <div>
         <div class="header">
             <div class="holde-div">
-               <!-- <img class="logo" src="../assets/logo.png"/>-->
+                <!-- <img class="logo" src="../assets/logo.png"/>-->
                 <p class="logoname">LOGO</p>
 
             </div>
@@ -10,142 +10,144 @@
 
                 <el-button  class="newproject" v-popover:popover4></el-button>
                 <router-link to="messagelist">
-                    <i router class="topmessage el-icon-message-solid"></i>
+                    <i router class="topmessage el-icon-message"></i>
                     <span v-if="messageLength>0" class="topmessagenum">{{messageLength}}</span>
                 </router-link>
                 <div  class="search-box">
+
                     <input v-model="keyword"  @keyup.enter="searchSubmit"/>
                     <router-link :to="{path:'/SearchPage',query:{keyword:keyword}}">
-                        <button>搜索11</button>
+                        <button></button>
                     </router-link>
+
                 </div>
                 <dl class="userinfo">
-<!--                    <dt>-->
-<!--                        <img src="../assets/photo.jpg"/>-->
-<!--                        <span> </span>-->
-<!--                    </dt>-->
+                    <!--                    <dt>-->
+                    <!--                        <img src="../assets/photo.jpg"/>-->
+                    <!--                        <span> </span>-->
+                    <!--                    </dt>-->
                     <dd>
                         {{ this.userInfo.trueName }}
                     </dd>
                 </dl>
-                <a  class="loginout" @click="loginOut"  href="https://passport.escience.cn/logout?WebServerURL=http://www.cstos.cstcloud.cn">【退出】</a>
+                <a  class="loginout" @click="loginOut"  href="https://passport.escience.cn/logout?WebServerURL=http://www.cstos.cstcloud.cn"></a>
 
 
             </div>
 
 
-       </div>
-    <!--新建项目-->
-    <el-dialog title="新建项目" :visible.sync="dialogProjectForm" :close-on-click-modal=false>
-        <el-form :model="form" :rules="rules1" ref="form">
-            <el-form-item label="项目名称" prop="name" :label-width="formLabelWidth">
-                <el-input v-model="form.name" autocomplete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="项目简介" prop="desc" :label-width="formLabelWidth">
-                <el-input type="textarea" v-model="form.desc"></el-input>
-                <p  style="margin-left: 5px; font-size: 12px; color: #999"> 限2000字</p>
-            </el-form-item>
-          <!--  <el-form-item label="是否公开" :label-width="formLabelWidth">
-                <el-radio v-model="form.radio" label="1">私有</el-radio>
-                <el-radio v-model="form.radio" label="2">公开</el-radio>
-            </el-form-item>-->
-            <el-form-item>
-                <div style="display: block; text-align: center">
-                    <el-button @click="resetForm('form','dialogProjectForm')">取 消</el-button>
-                    <el-button type="primary" @click=" newProject('form')">确 定</el-button>
-                </div>
-            </el-form-item>
-        </el-form>
-    </el-dialog>
-    <!--//新建项目-->
-    <!--新建仓库-->
-    <el-dialog title="新建仓库" :visible.sync="dialogRepository" :close-on-click-modal=false>
-        <el-form :model="projectForm" :rules="rules2" ref="projectForm" >
-            <el-form-item prop="name" label="仓库名称" :label-width="formLabelWidth">
-                <el-input v-model="projectForm.name" autocomplete="off"></el-input>
-                <p style="font-size: 12px; color: #f81d22">仓库名称只允许字母、数字或者下划线(_)、中划线(-)、点(.)</p>
-            </el-form-item>
-            <el-form-item label="选择项目" :label-width="formLabelWidth">
-                <el-select size="medium" v-model="projectForm.projectId" placeholder="请选择">
-                    <el-option
-                            v-for="item in projectList"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id">
-                    </el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item prop="desc" label="简介" :label-width="formLabelWidth">
-                <el-input type="textarea" v-model="projectForm.desc"></el-input>
-                <p  style="margin-left: 5px; font-size: 12px; color: #999"> 限2000字</p>
-            </el-form-item>
-            <el-form-item prop="ifPublic"  label="是否公开" :label-width="formLabelWidth">
-                <el-radio v-model="projectForm.ifPublic" label="1">私有</el-radio>
-                <el-radio v-model="projectForm.ifPublic" label="2">公开</el-radio>
-            </el-form-item>
-            <el-form-item>
-                <div style="display: block; text-align: center">
-                    <el-button  @click=" resetForm('projectForm','dialogRepository')">取 消</el-button>
-                    <el-button type="primary" @click=" newRepositories('projectForm') ">确 定</el-button>
-                </div>
-            </el-form-item>
-        </el-form>
-    </el-dialog>
-    <!--//新建仓库-->
-    <!--新建代码片段-->
-    <el-dialog title="新建代码片段" :visible.sync="dialogCode" :close-on-click-modal=false>
-        <el-form :model="snippetForm"  :rules="rules3" ref="snippetForm">
-            <el-form-item label="标题" prop="name" :label-width="formLabelWidth">
-                <el-input v-model="snippetForm.name" autocomplete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="代码片段" prop="desc" :label-width="formLabelWidth">
-                <el-input v-model="snippetForm.desc" autocomplete="off" placeholder="简介"></el-input>
-                <el-input :rows="5" style="margin-top: 10px;" type="textarea" v-model="snippetForm.codeSnippet"  placeholder="代码片段"></el-input>
-            </el-form-item>
-            <el-form-item label="所属类型" prop="ownerType" :label-width="formLabelWidth">
-                <el-select size="medium" v-model="snippetForm.ownerType" placeholder="请选择">
-                    <el-option
-                            v-for="item in ownerTypeOption"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id">
-                    </el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item v-if="snippetForm.ownerType==2" prop="projectId" label="选择项目" :label-width="formLabelWidth">
-                <el-select size="medium" v-model="snippetForm.projectId" placeholder="请选择">
-                    <el-option
-                            v-for="item in projectList"
-                            :key="item.id"
-                            :label="item.name"
-                            :value="item.id">
-                    </el-option>
-                </el-select>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click=" resetForm('snippetForm','dialogCode')">取 消</el-button>
-            <el-button type="primary" @click=" newSnippe('snippetForm') ">确 定</el-button>
         </div>
-    </el-dialog>
-    <!--//新建代码片段-->
-    <!--创建弹出-->
-    <el-popover
-            ref="popover4"
-            placement="top"
-            width="120"
-            trigger="click">
-        <div  class="newbox">
-            <el-button @click="newFun(1)" style="margin: 10px;display: block" type="primary" plain>创建项目
-            </el-button>
-            <el-button @click="newFun(2)" style="margin: 10px;display: block" type="primary" plain>创建仓库
-            </el-button>
-            <!--  <el-button style="margin: 10px;display: block" type="primary" plain>导入仓库</el-button>-->
-            <el-button @click="newFun(3)" style="margin: 10px;display: block" type="primary" plain>代码片段
-            </el-button>
-        </div>
-    </el-popover>
-   </div>
+        <!--新建项目-->
+        <el-dialog title="新建项目" :visible.sync="dialogProjectForm" :close-on-click-modal=false>
+            <el-form :model="form" :rules="rules1" ref="form">
+                <el-form-item label="项目名称" prop="name" :label-width="formLabelWidth">
+                    <el-input v-model="form.name" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="项目简介" prop="desc" :label-width="formLabelWidth">
+                    <el-input type="textarea" v-model="form.desc"></el-input>
+                    <p  style="margin-left: 5px; font-size: 12px; color: #999"> 限2000字</p>
+                </el-form-item>
+                <!--  <el-form-item label="是否公开" :label-width="formLabelWidth">
+                      <el-radio v-model="form.radio" label="1">私有</el-radio>
+                      <el-radio v-model="form.radio" label="2">公开</el-radio>
+                  </el-form-item>-->
+                <el-form-item>
+                    <div style="display: block; text-align: center">
+                        <el-button @click="resetForm('form','dialogProjectForm')">取 消</el-button>
+                        <el-button type="primary" @click=" newProject('form')">确 定</el-button>
+                    </div>
+                </el-form-item>
+            </el-form>
+        </el-dialog>
+        <!--//新建项目-->
+        <!--新建仓库-->
+        <el-dialog title="新建仓库" :visible.sync="dialogRepository" :close-on-click-modal=false>
+            <el-form :model="projectForm" :rules="rules2" ref="projectForm" >
+                <el-form-item prop="name" label="仓库名称" :label-width="formLabelWidth">
+                    <el-input v-model="projectForm.name" autocomplete="off"></el-input>
+                    <p style="font-size: 12px; color: #f81d22">仓库名称只允许字母、数字或者下划线(_)、中划线(-)、点(.)</p>
+                </el-form-item>
+                <el-form-item label="选择项目" :label-width="formLabelWidth">
+                    <el-select size="medium" v-model="projectForm.projectId" placeholder="请选择">
+                        <el-option
+                                v-for="item in projectList"
+                                :key="item.id"
+                                :label="item.name"
+                                :value="item.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item prop="desc" label="简介" :label-width="formLabelWidth">
+                    <el-input type="textarea" v-model="projectForm.desc"></el-input>
+                    <p  style="margin-left: 5px; font-size: 12px; color: #999"> 限2000字</p>
+                </el-form-item>
+                <el-form-item prop="ifPublic"  label="是否公开" :label-width="formLabelWidth">
+                    <el-radio v-model="projectForm.ifPublic" label="1">私有</el-radio>
+                    <el-radio v-model="projectForm.ifPublic" label="2">公开</el-radio>
+                </el-form-item>
+                <el-form-item>
+                    <div style="display: block; text-align: center">
+                        <el-button  @click=" resetForm('projectForm','dialogRepository')">取 消</el-button>
+                        <el-button type="primary" @click=" newRepositories('projectForm') ">确 定</el-button>
+                    </div>
+                </el-form-item>
+            </el-form>
+        </el-dialog>
+        <!--//新建仓库-->
+        <!--新建代码片段-->
+        <el-dialog title="新建代码片段" :visible.sync="dialogCode" :close-on-click-modal=false>
+            <el-form :model="snippetForm"  :rules="rules3" ref="snippetForm">
+                <el-form-item label="标题" prop="name" :label-width="formLabelWidth">
+                    <el-input v-model="snippetForm.name" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="代码片段" prop="desc" :label-width="formLabelWidth">
+                    <el-input v-model="snippetForm.desc" autocomplete="off" placeholder="简介"></el-input>
+                    <el-input :rows="5" style="margin-top: 10px;" type="textarea" v-model="snippetForm.codeSnippet"  placeholder="代码片段"></el-input>
+                </el-form-item>
+                <el-form-item label="所属类型" prop="ownerType" :label-width="formLabelWidth">
+                    <el-select size="medium" v-model="snippetForm.ownerType" placeholder="请选择">
+                        <el-option
+                                v-for="item in ownerTypeOption"
+                                :key="item.id"
+                                :label="item.name"
+                                :value="item.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item v-if="snippetForm.ownerType==2" prop="projectId" label="选择项目" :label-width="formLabelWidth">
+                    <el-select size="medium" v-model="snippetForm.projectId" placeholder="请选择">
+                        <el-option
+                                v-for="item in projectList"
+                                :key="item.id"
+                                :label="item.name"
+                                :value="item.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click=" resetForm('snippetForm','dialogCode')">取 消</el-button>
+                <el-button type="primary" @click=" newSnippe('snippetForm') ">确 定</el-button>
+            </div>
+        </el-dialog>
+        <!--//新建代码片段-->
+        <!--创建弹出-->
+        <el-popover
+                ref="popover4"
+                placement="top"
+                width="120"
+                trigger="click">
+            <div  class="newbox">
+                <el-button @click="newFun(1)" style="margin: 10px;display: block" type="primary" plain>创建项目
+                </el-button>
+                <el-button @click="newFun(2)" style="margin: 10px;display: block" type="primary" plain>创建仓库
+                </el-button>
+                <!--  <el-button style="margin: 10px;display: block" type="primary" plain>导入仓库</el-button>-->
+                <el-button @click="newFun(3)" style="margin: 10px;display: block" type="primary" plain>代码片段
+                </el-button>
+            </div>
+        </el-popover>
+    </div>
 </template>
 
 <script>
@@ -481,34 +483,42 @@
     .header .search-box{
         float: left;
         /*margin-top: 13px;*/
+        padding: 0 0 0 10px;
         width: 360px;
         height: 32px;
+        border: 1px solid #dedede;
+        background: #fff;
     }
     .header .search-box input{
         float: left;
         padding-left: 10px;
         width: 268px;
         height: 30px;
-        background: #fff;
-        border: 1px solid #dedede;
-        border-radius:20px 0 0 20px;
+
+
+        /*border-radius:20px 0 0 20px;*/
 
     }
-    .header .search-box input:focus{
-        background: #FFFFFF;
-        border: 1px solid #dedede;
-        outline:1px solid #fff;
-    }
+    /*    .header .search-box input:focus{
+            background: #FFFFFF;
+            border: 1px solid #dedede;
+            outline:1px solid #fff;
+        }*/
     .header .search-box button{
-        float: left;
-        width: 80px;
+        padding: 0px 10px 0 10px;
+        float: right;
+        width: 40px;
         height: 32px;
         line-height: 32px;
         text-align: center;
-        color: #fff;
-        background: #4495ca;
-        border: none;
-        border-radius:0 20px 20px 0 ;
+        margin-top: 5px;
+        /*color: #fff;*/
+        /*background: #4495ca;*/
+        /*border: none;*/
+        /*border-radius:0 20px 20px 0 ;*/
+        background: url("../assets/search.png") no-repeat;
+        background-size: 23px ;
+
     }
     .header  .newproject{
         float: left;
@@ -548,11 +558,15 @@
         margin: 0  20px;
     }
     .header .loginout{
+        width: 24px;
+        height: 24px;
+        display: block;
         float: right;
         margin: 0  20px 0 0;
         font-size: 14px;
         color: #d31519;
-        text-decoration: none;
+        background: url("../assets/login-out.png") no-repeat;
+        background-size: 25px ;
     }
     .header .userinfo dt {
         float: left;
@@ -576,6 +590,7 @@
         line-height: 30px;
         color: #000;
         text-align: center;
+
     }
 
 

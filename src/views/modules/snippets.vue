@@ -246,23 +246,8 @@
     display: block;
     margin: 5px 10px;
     width: 12px;
-    height:16px;
+    height:15px;
     background: url("../../assets/icon_lock.png") no-repeat;
-  }
-  .home .iconcode{
-    float: left;
-    margin-right: 10px;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
-    color: #fff;
-    text-align: center;
-    background: #438dd1;
-    border-radius: 50%;
-    cursor: pointer;
-    /*  background: url("../assets/icon_code.png") no-repeat;
-      background-size: cover;*/
   }
 
 </style>

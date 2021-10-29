@@ -361,9 +361,8 @@
   }
   .search {
     position: relative;
-    margin: 80px 15px 15px;
+    margin: 110px 15px 15px;
     padding: 15px 30px;
-    margin-left: 310px;
     min-height: calc(100vh - 60px);
     background: #fff;
     border-radius: 8px;}
@@ -374,11 +373,15 @@
     width: 26px;
     height: 26px;
     line-height: 26px;
-    color: #fff;
     text-align: center;
-    background: #438dd1;
+    /*background: #438dd1;*/
     border-radius: 50%;
+    color: #438dd1;
+    font-style: italic;
     cursor: pointer;
+    padding-right: 10px;
+    font-weight: bold;
+    border-right: 1px solid #dedede;
     /*  background: url("../assets/icon_code.png") no-repeat;
       background-size: cover;*/
   }

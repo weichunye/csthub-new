@@ -210,20 +210,5 @@ export default {
     height:16px;
     background: url("../../assets/icon_lock.png") no-repeat;
   }
-  .home .iconcode{
-    float: left;
-    margin-right: 10px;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
-    color: #fff;
-    text-align: center;
-    background: #438dd1;
-    border-radius: 50%;
-    cursor: pointer;
-    /*  background: url("../assets/icon_code.png") no-repeat;
-      background-size: cover;*/
-  }
 
 </style>

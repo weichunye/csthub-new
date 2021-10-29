@@ -12,56 +12,60 @@
                     text-color="#fff"
                     mode="horizontal"
                     active-text-color="#ffd04b">
-<!--                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">-->
+                <!--                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">-->
                 <el-menu-item index="/" @click="goDetails('index')">
-                    <i class="el-icon-menu"></i>
+                    <!--                    <i class="el-icon-menu"></i>-->
                     <span slot="title">工作台</span>
                 </el-menu-item>
                 <el-menu-item index="/projects" @click="goDetails('projects')">
-                    <i class="el-icon-folder"></i>
+                    <!--                    <i class="el-icon-folder"></i>-->
                     <span slot="title">项目</span>
                 </el-menu-item>
                 <el-menu-item index="/projectrepositories"  v-if="!this.$route.query.depotId"  @click="goDetails('projectrepositories')">
-                    <i class="el-icon-document-copy"></i>
+                    <!--                    <i class="el-icon-document-copy"></i>-->
                     <span slot="title">代码仓库</span>
                 </el-menu-item>
-                    <el-submenu index="3"  @click="goDetails('projectrepositories')" v-else>
-                        <template slot="title">
-                            <router-link  :to="{path:'/projectrepositories',query:{projectId:this.$route.query.projectId}}" >
-                            <i class="el-icon-document-copy"></i>
+                <el-submenu index="3"  @click="goDetails('projectrepositories')" v-else>
+                    <template slot="title">
+                        <router-link  :to="{path:'/projectrepositories',query:{projectId:this.$route.query.projectId}}" >
+                            <!--                            <i class="el-icon-document-copy"></i>-->
                             <span>代码仓库</span>
-                            </router-link>
-                        </template>
-                        <el-menu-item index="4-2"  @click="goDetails('repositorydetail')">源码</el-menu-item>
-                        <el-menu-item index="4-3"  @click="goDetails('branch')">分支管理</el-menu-item>
-                       <!-- <el-menu-item index="4-4"  @click="goDetails('MergeList')" >合并请求</el-menu-item>-->
-                        <el-menu-item index="4-1"   @click="goDetails('member')">成员管理</el-menu-item>
-                        <el-menu-item index="4-5" @click="goDetails('commiterecord')">提交记录</el-menu-item>
-                    </el-submenu>
+                        </router-link>
+                    </template>
+                    <el-menu-item index="4-2"  @click="goDetails('repositorydetail')">源码</el-menu-item>
+                    <el-menu-item index="4-3"  @click="goDetails('branch')">分支管理</el-menu-item>
+                    <!-- <el-menu-item index="4-4"  @click="goDetails('MergeList')" >合并请求</el-menu-item>-->
+                    <el-menu-item index="4-1"   @click="goDetails('member')">成员管理</el-menu-item>
+                    <el-menu-item index="4-5" @click="goDetails('commiterecord')">提交记录</el-menu-item>
+                </el-submenu>
                 <el-menu-item index="/snippets"  @click="goDetails('snippets')">
-                    <i class="el-icon-postcard"></i>
+                    <!--                    <i class="el-icon-postcard"></i>-->
                     <span slot="title">代码片段</span>
+
                 </el-menu-item>
-           <!--     <el-menu-item index="6">
-                    <i class="el-icon-setting"></i>
-                    <span slot="title">合并请求</span>
-                </el-menu-item>-->
+                <!--     <el-menu-item index="6">
+                         <i class="el-icon-setting"></i>
+                         <span slot="title">合并请求</span>
+                     </el-menu-item>-->
+
+
+
                 <el-menu-item index="/creatssh"  @click="goDetails('creatssh')">
-                    <i class="el-icon-setting"></i>
+                    <!--                    <i class="el-icon-setting"></i>-->
                     <span slot="title">公钥管理</span>
                 </el-menu-item>
                 <el-menu-item index="/MergeList"  @click="goDetails('MergeList')">
-                    <i class="el-icon-edit-outline"></i>
+                    <!--                    <i class="el-icon-edit-outline"></i>-->
                     <span slot="title">合并请求</span>
                 </el-menu-item>
                 <el-menu-item index="/resetPassWord"  @click="resetPassWord()">
-                    <i class="el-icon-edit"></i>
+                    <!--                    <i class="el-icon-edit"></i>-->
                     <span slot="title">重置HTTP克隆独立密码</span>
                 </el-menu-item>
-                 <!--   <el-menu-item index="8">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">源码</span>
-                    </el-menu-item>-->
+                <!--   <el-menu-item index="8">
+                       <i class="el-icon-setting"></i>
+                       <span slot="title">源码</span>
+                   </el-menu-item>-->
             </el-menu>
 
         </div>
@@ -261,8 +265,17 @@
     .sidebar  .el-menu .is-active span{
         color:rgb(255, 208, 75);
     }
+    .sidebar .el-menu--horizontal li{
+        padding:0 30px!important;
+    }
+    .sidebar .el-menu--horizontal li.is-active{
+        background-color: rgb(255, 208, 75) !important;
+    }
+    .el-menu-item.is-active i{
+        color:#ffffff!important;
+    }
     .sidebar span{
-        color: #fff;
+        color: #fff!important;
     }
     .returnPage{
         position: fixed;

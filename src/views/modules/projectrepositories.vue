@@ -410,12 +410,14 @@
         width: 26px;
         height: 26px;
         line-height: 26px;
-        color: #fff;
         text-align: center;
-        background: #438dd1;
+        /*background: #438dd1;*/
         border-radius: 50%;
+        color: #438dd1;
+        font-style: italic;
         cursor: pointer;
-        /*  background: url("../assets/icon_code.png") no-repeat;
-          background-size: cover;*/
+        padding-right: 10px;
+        font-weight: bold;
+        border-right: 1px solid #dedede;
     }
 </style>

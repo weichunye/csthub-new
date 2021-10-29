@@ -28,7 +28,7 @@ var userEntity = JSON.parse(userJsonStr);
 userEntity={
   token:'bb475b3e3c05267426e38ab1d4b844ca',
   cstnetId :'cclhyt@163.com',
-  trueName :'王东阳',
+  trueName :'喜爱',
 }
 
 if(userEntity){
